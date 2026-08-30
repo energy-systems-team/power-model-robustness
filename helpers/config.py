@@ -164,12 +164,14 @@ def set_params_helsinki(filter_scenario, read_file="FMI_Helsinki_PV.csv", write_
         filter_data = {
             'daytime' : {}
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_2":
         filter_data = {
             'daytime':{}, 
             'iec':{}, 
             'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_3":
         filter_data = {
             'daytime':{}, 
@@ -179,6 +181,17 @@ def set_params_helsinki(filter_scenario, read_file="FMI_Helsinki_PV.csv", write_
             'snow':{}, 
             'outlier':{'window_size':800, 'window_width':2},
             }  
+        plr_value = -0.33
+    elif filter_scenario == "scenario_4":
+        filter_data = {
+            'daytime':{}, 
+            'iec':{}, 
+            'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
+            'qc':{}, 
+            'snow':{}, 
+            'outlier':{'window_size':800, 'window_width':2},
+            }  
+        plr_value = -0.81
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
@@ -189,7 +202,6 @@ def set_params_helsinki(filter_scenario, read_file="FMI_Helsinki_PV.csv", write_
         header_length = 0
     col_name_dict = col_name_dict_helsinki
     cols_to_impute = [['T', 'wind'], [10, 10]]
-    plr_value = -0.33
     use_varjopuro_coefs = True
 
 
@@ -209,12 +221,14 @@ def set_params_kuopio(filter_scenario, read_file="FMI_Kuopio_PV.csv", write_file
         filter_data = {
             'daytime' : {}
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_2":
         filter_data = {
             'daytime':{}, 
             'iec':{}, 
             'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_3":
         filter_data = {
             'daytime':{}, 
@@ -223,7 +237,18 @@ def set_params_kuopio(filter_scenario, read_file="FMI_Kuopio_PV.csv", write_file
             'qc':{}, 
             'snow':{}, 
             'outlier':{'window_size':800, 'window_width':2},
-            }   
+            }
+        plr_value = -0.33
+    elif filter_scenario == "scenario_4":
+        filter_data = {
+            'daytime':{}, 
+            'iec':{}, 
+            'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
+            'qc':{}, 
+            'snow':{}, 
+            'outlier':{'window_size':800, 'window_width':2},
+            }  
+        plr_value = -0.41
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
@@ -234,7 +259,6 @@ def set_params_kuopio(filter_scenario, read_file="FMI_Kuopio_PV.csv", write_file
         header_length = 0
     col_name_dict = col_name_dict_kuopio
     cols_to_impute = [['T', 'wind'], [10, 10]]
-    plr_value = -0.33
     use_varjopuro_coefs = True
 
 
@@ -255,12 +279,14 @@ def set_params_sodankyla_20(filter_scenario, read_file="FMI_Sodankyla_20deg_PV.c
         filter_data = {
                 'daytime' : {}
             }   
+        plr_value = -0.0
     elif filter_scenario == "scenario_2":
         filter_data = {
             'daytime':{}, 
             'iec':{}, 
             'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_3":
         filter_data = {
             'daytime':{}, 
@@ -271,6 +297,18 @@ def set_params_sodankyla_20(filter_scenario, read_file="FMI_Sodankyla_20deg_PV.c
             'outlier':{'window_size':800, 'window_width':2},
             'cut_outliers':{'lower':400, 'upper':800, 'filter_threshold':800}
             }
+        plr_value = -0.33
+    elif filter_scenario == "scenario_4":
+        filter_data = {
+            'daytime':{}, 
+            'iec':{}, 
+            'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
+            'qc':{}, 
+            'snow':{}, 
+            'outlier':{'window_size':800, 'window_width':2},
+            'cut_outliers':{'lower':400, 'upper':800, 'filter_threshold':800}
+                    }
+        plr_value = -0.86
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
@@ -281,7 +319,7 @@ def set_params_sodankyla_20(filter_scenario, read_file="FMI_Sodankyla_20deg_PV.c
         header_length = 0
     col_name_dict = col_name_dict_sodankyla_20
     cols_to_impute = [['T', 'wind'], [10, 10]]
-    plr_value = -0.33
+    #plr_value = -0.33
     use_varjopuro_coefs = True
 
 
@@ -302,12 +340,14 @@ def set_params_sodankyla_90(filter_scenario, read_file="FMI_Sodankyla_90deg_PV.c
         filter_data = {
                 'daytime' : {}
             } 
+        plr_value = -0.0
     elif filter_scenario == "scenario_2":
         filter_data = {
             'daytime':{}, 
             'iec':{}, 
             'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_3":
         filter_data = {
             'daytime':{}, 
@@ -317,6 +357,17 @@ def set_params_sodankyla_90(filter_scenario, read_file="FMI_Sodankyla_90deg_PV.c
             'snow':{}, 
             'outlier':{'window_size':800, 'window_width':2},
             }
+        plr_value = -0.33
+    elif filter_scenario == "scenario_4":
+        filter_data = {
+            'daytime':{}, 
+            'iec':{}, 
+            'threshold':{'name':'power', 'lower':0, 'upper':20000}, 
+            'qc':{}, 
+            'snow':{}, 
+            'outlier':{'window_size':800, 'window_width':2},
+            }
+        plr_value = -1.35
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
@@ -327,7 +378,7 @@ def set_params_sodankyla_90(filter_scenario, read_file="FMI_Sodankyla_90deg_PV.c
         header_length = 0
     col_name_dict = col_name_dict_sodankyla_90
     cols_to_impute = [['T', 'wind'], [10, 10]]
-    plr_value = -0.33
+    #plr_value = -0.33
     use_varjopuro_coefs = True
 
 
@@ -348,12 +399,14 @@ def set_params_turku(filter_scenario, read_file="KTK_South_PV_weather_non_cleane
         filter_data = {
             'daytime' : {}
         }
+        plr_value = -0.0
     elif filter_scenario == "scenario_2":
         filter_data = {
             'daytime':{}, 
             'iec':{}, 
             'threshold':{'name':['power', 'poa_comp'], 'lower':[0, 100], 'upper':[100, 2000], 'negate':True}, 
             }
+        plr_value = -0.0
     elif filter_scenario == "scenario_3":
         filter_data = {
             'daytime':{}, 
@@ -363,13 +416,24 @@ def set_params_turku(filter_scenario, read_file="KTK_South_PV_weather_non_cleane
             'snow':{}, 
             'outlier':{'window_size':800, 'window_width':2},
             }
+        plr_value = -0.33
+    elif filter_scenario == "scenario_4":
+        filter_data = {
+            'daytime':{}, 
+            'iec':{}, 
+            'threshold':{'name':['power', 'poa_comp'], 'lower':[0, 100], 'upper':[100, 2000], 'negate':True}, 
+            'qc':{},  
+            'snow':{}, 
+            'outlier':{'window_size':800, 'window_width':2},
+            }
+        plr_value = -2.65   
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
     header_length = 0
     col_name_dict = col_name_dict_turku
     cols_to_impute = [[], []]
-    plr_value = -0.33
+    #plr_value = -0.33
     use_varjopuro_coefs = True
 
 

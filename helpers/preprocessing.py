@@ -197,50 +197,51 @@ def calculate_power_with_plr_losses(df, plr_value, col_name, initial_date):
         return df
 
 
-def aggregate_data(data, resolution, count_limit, save_data_path=""):
-        """
-        Aggregate time-series data to a coarser temporal resolution.
-
-        The function resamples the data to a specified time interval,
-        computing mean values while ensuring a minimum number of observations
-        per aggregation window.
-
-        Parameters
-        ----------
-        data : pandas.DataFrame
-                Input dataset indexed by datetime.
-        resolution : int
-                Target resolution in minutes.
-        count_limit : int
-                Minimum number of valid observations required within each
-                resampling window to compute the mean.
-        save_data_path : str, optional
-                Path to save the aggregated dataset (CSV, semicolon-separated).
-                If empty, the data is not saved.
-
-        Returns
-        -------
-        pandas.DataFrame
-                Aggregated dataset with reduced temporal resolution.
-
-        Notes
-        -----
-        - Aggregation uses:
-                mean → aggregated value
-                count → number of observations in window
-        - Windows with insufficient data (`count < count_limit`) are discarded.
-        - The 'time' column (if present) is excluded from aggregation.
-        - The function does not modify the original DataFrame.
-        """
-        
-        resolution_str = f'{resolution}min'
-        data_aggregated = data.resample(resolution_str)[data.columns.drop("time")].agg(["mean", "count"])
-        counts = data_aggregated.xs("count", axis=1, level=1)
-        means = data_aggregated.xs("mean", axis=1, level=1)
-        data_aggregated = means.where(counts >= count_limit).dropna()
-
-        if save_data_path != "":
-                data_aggregated.to_csv(save_data_path, sep=";")
-
-        return data_aggregated
-
+#def aggregate_data(data, resolution, count_limit, save_data_path=""):
+#        """
+#        Aggregate time-series data to a coarser temporal resolution.
+#
+#        The function resamples the data to a specified time interval,
+#        computing mean values while ensuring a minimum number of observations
+#        per aggregation window.
+#
+#        Parameters
+#        ----------
+#        data : pandas.DataFrame
+#                Input dataset indexed by datetime.
+#        resolution : int
+#                Target resolution in minutes.
+#        count_limit : int
+#                Minimum number of valid observations required within each
+#                resampling window to compute the mean.
+#        save_data_path : str, optional
+#                Path to save the aggregated dataset (CSV, semicolon-separated).
+#                If empty, the data is not saved.
+#
+#        Returns
+#        -------
+#        pandas.DataFrame
+#                Aggregated dataset with reduced temporal resolution.
+#
+#        Notes
+#        -----
+#        - Aggregation uses:
+#                mean → aggregated value
+#                count → number of observations in window
+#        - Windows with insufficient data (`count < count_limit`) are discarded.
+#        - The 'time' column (if present) is excluded from aggregation.
+#        - The function does not modify the original DataFrame.
+#        """
+#        
+#        resolution_str = f'{resolution}min'
+#        data_aggregated = data.resample(resolution_str)[data.columns.drop("time")].agg(["mean", "count"])
+#        counts = data_aggregated.xs("count", axis=1, level=1)
+#        means = data_aggregated.xs("mean", axis=1, level=1)
+#        data_aggregated = means.where(counts >= count_limit).dropna()
+#
+#        if save_data_path != "":
+#                data_aggregated.to_csv(save_data_path, sep=";")
+#
+#        return data_aggregated
+#
+#
