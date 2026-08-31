@@ -149,7 +149,7 @@ def calculate_power_withour_plr_losses(df, plr_value, initial_date):
         return df
 
 
-def calculate_power_with_plr_losses(df, plr_value, col_name, initial_date):
+def calculate_power_with_plr_losses(df, plr_value, col_name, save_col_name, initial_date):
         """
         Apply performance loss ratio (PLR) degradation to power values.
 
@@ -192,7 +192,7 @@ def calculate_power_with_plr_losses(df, plr_value, col_name, initial_date):
 
         power_with_plr_losses = (1 - np.abs(plr_value)/100 * (mins_from_beginning / mins_in_year)) * power_without_plr
 
-        df[col_name] = power_with_plr_losses
+        df[save_col_name] = power_with_plr_losses
 
         return df
 
