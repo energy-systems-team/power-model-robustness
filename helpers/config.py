@@ -191,9 +191,9 @@ def set_params_helsinki(filter_scenario, read_file="FMI_Helsinki_PV.csv", write_
             'snow':{}, 
             'outlier':{'window_size':800, 'window_width':2},
             }  
-        #plr_value = -0.81
+        plr_value = -0.81
         #plr_value = -1.6
-        plr_value = -5
+        #plr_value = -5
     else:
         print("Filter scenario has to be 1, 2, or 3")
 
